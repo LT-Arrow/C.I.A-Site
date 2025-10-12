@@ -17,56 +17,279 @@ function Check-Git {
     git --version | Out-Null
     return $true
   } catch {
-    return $false
-  }
-}
+    <#
+    git-push.ps1
 
-if (-not (Check-Git)) {
-  Write-Error "Git is not installed or not in PATH. Install Git for Windows: https://git-scm.com/download/win"
-  exit 1
-}
+    Minimal, well-formed PowerShell helper to initialize a repository, commit (creates an empty commit if none exist), set branch to 'main', add/replace origin, and push.
 
-# Initialize if not already a git repo
-if (-not (Test-Path .git)) {
-  git init
-} else {
-  Write-Host ".git already exists — repository already initialized"
-}
+    Run from the repository root. Example:
+      Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+      .\scripts\git-push.ps1 -RemoteUrl 'https://github.com/LT-Arrow/C.I.A-Site.git' -CommitMessage 'Initial commit' -ForceRemote:$true
+    #>
 
-# Stage all
-git add .
+    param(
+      [string]$RemoteUrl = 'https://github.com/LT-Arrow/C.I.A-Site.git',
+      [string]$CommitMessage = 'Initial commit',
+      [bool]$ForceRemote = $false
+    )
 
-# Commit if there are staged changes - use porcelain status which is more reliable
-$status = (git status --porcelain) -join "`n"
-if ([string]::IsNullOrWhiteSpace($status)) {
-  Write-Host 'No changes to commit (staged).'
-} else {
-  git commit -m "$CommitMessage"
-}
+    function Find-Git {
+      try { & git --version > $null; return $true } catch {}
+      try { $where = & where.exe git 2>$null; if ($where) { return $true } } catch {}
 
-# Set branch to main
-# Set branch to main (if no commits exist this will be a no-op or return a message)
-try {
-  git branch -M main 2>$null
-} catch {
-  Write-Host "Could not set branch to main — it may already exist or another issue occurred."
-}
+      <#
+      git-push.ps1
 
-# Add remote if not present
-$existing = git remote | Select-String -Pattern '^origin$' -Quiet
-if (-not $existing) {
-  git remote add origin $RemoteUrl
-} else {
-  Write-Host "Remote 'origin' already exists. To change it run: git remote set-url origin <url>"
-}
+      Minimal, well-formed PowerShell helper to initialize a repository, commit (creates an empty commit if none exist), set branch to 'main', add/replace origin, and push.
 
-# Push
-Write-Host "Attempting to push to origin main..."
-$pushResult = & git push -u origin main 2>&1
-if ($LASTEXITCODE -ne 0) {
-  Write-Error "Push failed. Output:`n$pushResult`
-Check authentication, network, and that a local branch named 'main' exists (you may need to commit first)."
-  exit 1
-} else {
-  Write-Host "Push completed successfully."
-}
+      Run from the repository root. Example:
+        Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+        .\scripts\git-push.ps1 -RemoteUrl 'https://github.com/LT-Arrow/C.I.A-Site.git' -CommitMessage 'Initial commit' -ForceRemote:$true
+      #>
+
+      param(
+        [string]$RemoteUrl = 'https://github.com/LT-Arrow/C.I.A-Site.git',
+        [string]$CommitMessage = 'Initial commit',
+        [bool]$ForceRemote = $false
+      )
+
+      function Find-Git {
+        try { & git --version > $null; return $true } catch {}
+        try { $where = & where.exe git 2>$null; if ($where) { return $true } } catch {}
+
+        <#
+        git-push.ps1
+
+        Minimal, well-formed PowerShell helper to initialize a repository, commit (creates an empty commit if none exist), set branch to 'main', add/replace origin, and push.
+
+        Run from the repository root. Example:
+          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+          .\scripts\git-push.ps1 -RemoteUrl 'https://github.com/LT-Arrow/C.I.A-Site.git' -CommitMessage 'Initial commit' -ForceRemote:$true
+        #>
+
+        param(
+          [string]$RemoteUrl = 'https://github.com/LT-Arrow/C.I.A-Site.git',
+          [string]$CommitMessage = 'Initial commit',
+          [bool]$ForceRemote = $false
+        )
+
+        function Find-Git {
+          try { & git --version > $null; return $true } catch {}
+          try { $where = & where.exe git 2>$null; if ($where) { return $true } } catch {}
+
+          $candidates = @(
+            "$env:ProgramFiles\Git\cmd",
+            "$env:ProgramFiles\Git\bin",
+            "$env:ProgramFiles(x86)\Git\cmd",
+            "$env:USERPROFILE\AppData\Local\Programs\Git\cmd"
+          )
+
+          foreach ($p in $candidates) {
+            $exe = Join-Path $p 'git.exe'
+            if (Test-Path $exe) {
+              if (-not ($env:Path -split ';' | Where-Object { $_ -eq $p })) {
+                $env:Path = "$($env:Path);$p"
+                <#
+                git-push.ps1
+
+                Minimal, well-formed PowerShell helper to initialize a repository, commit (creates an empty commit if none exist), set branch to 'main', add/replace origin, and push.
+
+                Run from the repository root. Example:
+                  Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+                  .\scripts\git-push.ps1 -RemoteUrl 'https://github.com/LT-Arrow/C.I.A-Site.git' -CommitMessage 'Initial commit' -ForceRemote:$true
+                #>
+
+                param(
+                  [string]$RemoteUrl = 'https://github.com/LT-Arrow/C.I.A-Site.git',
+                  [string]$CommitMessage = 'Initial commit',
+                  [bool]$ForceRemote = $false
+                )
+
+                function Find-Git {
+                  try { & git --version > $null; return $true } catch {}
+                  try { $where = & where.exe git 2>$null; if ($where) { return $true } } catch {}
+
+                  $candidates = @(
+                    "$env:ProgramFiles\Git\cmd",
+                    "$env:ProgramFiles\Git\bin",
+                    "$env:ProgramFiles(x86)\Git\cmd",
+                    "$env:USERPROFILE\AppData\Local\Programs\Git\cmd"
+                  )
+
+                  foreach ($p in $candidates) {
+                    $exe = Join-Path $p 'git.exe'
+                    if (Test-Path $exe) {
+                      if (-not ($env:Path -split ';' | Where-Object { $_ -eq $p })) {
+                        $env:Path = "$($env:Path);$p"
+                        <#
+                        git-push.ps1
+
+                        Minimal, well-formed PowerShell helper to initialize a repository, commit (creates an empty commit if none exist), set branch to 'main', add/replace origin, and push.
+
+                        Run from the repository root. Example:
+                          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+                          .\scripts\git-push.ps1 -RemoteUrl 'https://github.com/LT-Arrow/C.I.A-Site.git' -CommitMessage 'Initial commit' -ForceRemote:$true
+                        #>
+
+                        param(
+                          [string]$RemoteUrl = 'https://github.com/LT-Arrow/C.I.A-Site.git',
+                          [string]$CommitMessage = 'Initial commit',
+                          [bool]$ForceRemote = $false
+                        )
+
+                        function Find-Git {
+                          try { & git --version > $null; return $true } catch {}
+                          try { $where = & where.exe git 2>$null; if ($where) { return $true } } catch {}
+
+                          $candidates = @(
+                            "$env:ProgramFiles\Git\cmd",
+                            "$env:ProgramFiles\Git\bin",
+                            "$env:ProgramFiles(x86)\Git\cmd",
+                            "$env:USERPROFILE\AppData\Local\Programs\Git\cmd"
+                          )
+
+                          foreach ($p in $candidates) {
+                            $exe = Join-Path $p 'git.exe'
+                            if (Test-Path $exe) {
+                              if (-not ($env:Path -split ';' | Where-Object { $_ -eq $p })) {
+                                $env:Path = "$($env:Path);$p"
+                                <#
+                                git-push.ps1
+
+                                Minimal, well-formed PowerShell helper to initialize a repository, commit (creates an empty commit if none exist), set branch to 'main', add/replace origin, and push.
+
+                                Run from the repository root. Example:
+                                  Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+                                  .\scripts\git-push.ps1 -RemoteUrl 'https://github.com/LT-Arrow/C.I.A-Site.git' -CommitMessage 'Initial commit' -ForceRemote:$true
+                                #>
+
+                                param(
+                                  [string]$RemoteUrl = 'https://github.com/LT-Arrow/C.I.A-Site.git',
+                                  [string]$CommitMessage = 'Initial commit',
+                                  [bool]$ForceRemote = $false
+                                )
+
+                                function Find-Git {
+                                  try { & git --version > $null; return $true } catch {}
+                                  try { $where = & where.exe git 2>$null; if ($where) { return $true } } catch {}
+
+                                  $candidates = @(
+                                    "$env:ProgramFiles\Git\cmd",
+                                    "$env:ProgramFiles\Git\bin",
+                                    "$env:ProgramFiles(x86)\Git\cmd",
+                                    "$env:USERPROFILE\AppData\Local\Programs\Git\cmd"
+                                  )
+
+                                  foreach ($p in $candidates) {
+                                    $exe = Join-Path $p 'git.exe'
+                                    if (Test-Path $exe) {
+                                      if (-not ($env:Path -split ';' | Where-Object { $_ -eq $p })) {
+                                        $env:Path = "$($env:Path);$p"
+                                        <#
+                                        git-push.ps1
+
+                                        Minimal, well-formed PowerShell helper to initialize a repository, commit (creates an empty commit if none exist), set branch to 'main', add/replace origin, and push.
+
+                                        Run from the repository root. Example:
+                                          Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+                                          .\scripts\git-push.ps1 -RemoteUrl 'https://github.com/LT-Arrow/C.I.A-Site.git' -CommitMessage 'Initial commit' -ForceRemote:$true
+                                        #>
+
+                                        param(
+                                          [string]$RemoteUrl = 'https://github.com/LT-Arrow/C.I.A-Site.git',
+                                          [string]$CommitMessage = 'Initial commit',
+                                          [bool]$ForceRemote = $false
+                                        )
+
+                                        function Find-Git {
+                                          try { & git --version > $null; return $true } catch {}
+                                          try { $where = & where.exe git 2>$null; if ($where) { return $true } } catch {}
+
+                                          $candidates = @(
+                                            "$env:ProgramFiles\Git\cmd",
+                                            "$env:ProgramFiles\Git\bin",
+                                            "$env:ProgramFiles(x86)\Git\cmd",
+                                            "$env:USERPROFILE\AppData\Local\Programs\Git\cmd"
+                                          )
+
+                                          foreach ($p in $candidates) {
+                                            $exe = Join-Path $p 'git.exe'
+                                            if (Test-Path $exe) {
+                                              if (-not ($env:Path -split ';' | Where-Object { $_ -eq $p })) {
+                                                $env:Path = "$($env:Path);$p"
+                                                Write-Host "Temporarily added '$p' to PATH for this session."
+                                              }
+                                              return $true
+                                            }
+                                          }
+                                          return $false
+                                        }
+
+                                        if (-not (Find-Git)) {
+                                          Write-Error "Git not found. Install Git for Windows: https://git-scm.com/download/win"
+                                          exit 1
+                                        }
+
+                                        Write-Host "Git found:"; & git --version
+
+                                        if (-not (Test-Path .git)) {
+                                          & git init
+                                          Write-Host "Initialized repository."
+                                        } else {
+                                          Write-Host "Repository already initialized (.git exists)."
+                                        }
+
+                                        # Stage everything
+                                        & git add .
+
+                                        # Check status
+                                        $status = (& git status --porcelain) -join "`n"
+                                        if ([string]::IsNullOrWhiteSpace($status)) {
+                                          Write-Host "No changes detected."
+                                        } else {
+                                          Write-Host "Changes detected:`n$status"
+                                        }
+
+                                        # Ensure there is at least one commit (create empty commit if none)
+                                        $hasCommits = $false
+                                        & git rev-parse --verify HEAD 2>$null
+                                        if ($LASTEXITCODE -eq 0) { $hasCommits = $true }
+
+                                        if ($hasCommits) {
+                                          if (-not ([string]::IsNullOrWhiteSpace($status))) {
+                                            & git commit -m "$CommitMessage"
+                                          } else {
+                                            Write-Host "Nothing to commit."
+                                          }
+                                        } else {
+                                          & git commit --allow-empty -m "$CommitMessage"
+                                          Write-Host "Created empty initial commit."
+                                        }
+
+                                        # Ensure branch main exists and is current
+                                        & git branch -M main 2>$null
+                                        Write-Host "Branch set to main (if possible)."
+
+                                        # Remote handling
+                                        $exists = (& git remote) -match '^origin$'
+                                        if ($exists) {
+                                          Write-Host "Remote 'origin' exists."
+                                          if ($ForceRemote) {
+                                            & git remote set-url origin $RemoteUrl
+                                            Write-Host "Replaced origin with $RemoteUrl"
+                                          } else {
+                                            Write-Host "To replace origin, re-run with -ForceRemote:$true"
+                                          }
+                                        } else {
+                                          & git remote add origin $RemoteUrl
+                                          Write-Host "Added origin $RemoteUrl"
+                                        }
+
+                                        Write-Host "Pushing to origin main..."
+                                        $out = & git push -u origin main 2>&1
+                                        if ($LASTEXITCODE -ne 0) {
+                                          Write-Error "Push failed. Output:`n$out"
+                                          exit 1
+                                        } else {
+                                          Write-Host "Push succeeded."
+                                        }
