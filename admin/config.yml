@@ -1,0 +1,8 @@
+# C.I.A-Site admin configuration
+site:
+  title: "C.I.A Site"
+  owner: "LT-Arrow"
+  year: 2025
+security:
+  allow_uploads: true
+  max_upload_size_mb: 50
