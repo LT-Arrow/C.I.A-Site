@@ -1,30 +1,16 @@
-# Windows
+# OS / editor
 Thumbs.db
-ehthumbs.db
-Desktop.ini
+.DS_Store
+*.log
 
-# Node
+# Node / Python / envs
 node_modules/
-npm-debug.log
-yarn-error.log
+venv/
+*.env
 
-# Python
-__pycache__/
-*.py[cod]
-
-# Editor directories and files
-.vscode/
-.idea/
-*.suo
-*.user
-*.userprefs
-
-# Uploads and generated content
+# uploads and logs
 uploads/
 watchlogs/
 
-# Mac
-.DS_Store
-
-# Ignore secrets
-*.env
+# VS Code
+.vscode/

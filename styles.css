@@ -1,9 +1,5 @@
-/* Basic starter styles for C.I.A-Site */
-:root{--bg:#0f1724;--card:#111827;--muted:#9CA3AF;--accent:#06b6d4}
-html,body{height:100%;margin:0;font-family:Segoe UI, Roboto, Arial, sans-serif;background:var(--bg);color:#fff}
-header{padding:1rem;background:linear-gradient(90deg,#042445 0%, #06324a 100%)}
-header h1{margin:0;font-size:1.25rem}
-nav{margin-top:.5rem}
-nav a{color:var(--accent);text-decoration:none}
-main{padding:1rem}
-footer{padding:1rem;color:var(--muted);font-size:.9rem}
+:root{--bg:#fff;--fg:#111;--accent:#0b63d6}
+body{font-family:Segoe UI,Arial,Helvetica,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:1rem}
+header{border-bottom:1px solid #eee;padding-bottom:0.5rem;margin-bottom:1rem}
+a{color:var(--accent);text-decoration:none}
+main{max-width:900px}

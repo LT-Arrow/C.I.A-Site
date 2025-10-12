@@ -1,11 +1,12 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main   # <-- change to 'master' if your branch is master
 
-media_folder: "uploads"
-public_folder: "/uploads"
+media_folder: "uploads"        # Folder for uploaded images/files
+public_folder: "/uploads"      # How CMS serves uploaded files
 
 collections:
+
   - name: "directives"
     label: "Directives"
     folder: "directives"
@@ -20,16 +21,50 @@ collections:
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
 
-  - name: "watchlogs"
-    label: "Watchlogs"
-    folder: "watchlogs"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Parent DN", name: "parent", widget: "relation", collection: "directives", search_fields: ["title"], value_field: "title" }
-      - { label: "Camera ID", name: "camera", widget: "string" }
-      - { label: "Timestamp", name: "timestamp", widget: "datetime" }
-      - { label: "TCS", name: "tcs", widget: "number" }
-      - { label: "Clip", name: "clip", widget: "file" }
-      - { label: "Notes", name: "notes", widget: "text" }
+  backend:
+    name: git-gateway
+    branch: main   # <-- change to 'master' if your branch is master
+
+  media_folder: "uploads"        # Folder for uploaded images/files
+  public_folder: "/uploads"      # How CMS serves uploaded files
+
+  collections:
+
+    - name: "directives"
+      label: "Directives"
+      folder: "directives"
+      create: true
+      slug: "{{slug}}"
+      fields:
+        - { label: "Title", name: "title", widget: "string" }
+        - { label: "Classification", name: "classification", widget: "string" }
+        - { label: "Containment Tier", name: "tier", widget: "number" }
+        - { label: "Status", name: "status", widget: "select", options: ["Active","Sealed","Archived"] }
+        - { label: "Type", name: "type", widget: "string" }
+        - { label: "Date", name: "date", widget: "datetime" }
+        - { label: "Body", name: "body", widget: "markdown" }
+
+    - name: "watchlogs"
+      label: "Watchlogs"
+      folder: "watchlogs"
+      create: true
+      slug: "{{slug}}"
+      fields:
+        - { label: "Title", name: "title", widget: "string" }
+        - { label: "Camera ID", name: "camera", widget: "string" }
+        - { label: "Date", name: "date", widget: "datetime" }
+        - { label: "Observed Entity", name: "entity", widget: "string" }
+        - { label: "Notes", name: "notes", widget: "markdown" }
+
+    - name: "containment_logs"
+      label: "Containment Logs"
+      folder: "containment_logs"
+      create: true
+      slug: "{{slug}}"
+      fields:
+        - { label: "Title", name: "title", widget: "string" }
+        - { label: "Entity Type", name: "entity_type", widget: "string" }
+        - { label: "Containment Level", name: "level", widget: "select", options: ["Low","Medium","High","Extreme"] }
+        - { label: "Status", name: "status", widget: "select", options: ["Secure","Breached","Unknown"] }
+        - { label: "Date", name: "date", widget: "datetime" }
+        - { label: "Notes", name: "notes", widget: "markdown" }
