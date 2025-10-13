@@ -1,38 +1,13 @@
-backend:
-  name: git-gateway
-  branch: main
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C.I.A Admin Portal</title>
+  </head>
+  <body>
+    <!-- Load Netlify CMS -->
+    <script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
+  </body>
+</html>
 
-media_folder: "uploads"
-public_folder: "/uploads"
-
-collections:
-  - name: "directives"
-    label: "Directives"
-    folder: "content/directives"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Body", name: "body", widget: "markdown" }
-
-  - name: "watchlogs"
-    label: "Watchlogs"
-    folder: "content/watchlogs"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Camera ID", name: "camera_id", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
-
-  - name: "containment_logs"
-    label: "Containment Logs"
-    folder: "content/containment"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Subject ID", name: "subject_id", widget: "string" }
-      - { label: "Containment Level", name: "containment_level", widget: "select", options: ["Low", "Moderate", "High", "Critical"] }
-      - { label: "Body", name: "body", widget: "markdown" }
