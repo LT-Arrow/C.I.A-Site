@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>C.I.A Admin Portal</title>
-  </head>
-  <body>
-    <!-- Load Netlify CMS -->
-    <script src="https://unpkg.com/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
-  </body>
-</html>
-
+backend:
+  name: git-gateway
+  branch: main
+publish_mode: editorial_workflow
+media_folder: "static/uploads"
+public_folder: "/uploads"
+site_url: "http://cia-site.org"
