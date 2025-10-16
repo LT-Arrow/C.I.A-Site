@@ -1,61 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>C.I.A | Cryptic Intelligence Agency</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/main.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CIA Project - Home</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  
-<div id="navbar"></div>
+  <div id="navbar"></div>
 
-<header>
-  <h1>C.I.A Headquarters</h1>
-  <p><i>“Preserving secrecy for the safety of humanity.”</i></p>
-</header>
+  <main>
+    <h1>Welcome to the Central Intelligence Archives</h1>
+    <p>The CIA Project is a classified containment and intelligence organization focused on documenting, analyzing, and neutralizing unknown phenomena across multiple worlds.</p>
 
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="submit.html">Submit</a></li>
-    <li><a href="handbook.html">New Recruit / Handbook</a></li>
-    <li><a href="lore.html">CIA Lore</a></li>
-    <li><a href="directives.html">Directives</a></li>
-    <li><a href="watchlogs.html">Watchlogs</a></li>
-    <li><a href="containment_logs.html">Containment Logs</a></li>
-  </ul>
-</nav>
-
-<main>
-  <section class="intro">
-    <h2>Welcome, Recruit</h2>
-    <p>
-      You have accessed the <strong>Cryptic Intelligence Agency</strong> network.
-      This database contains classified information on supernatural, alien, and anomalous entities
-      discovered since the outbreak of the <strong>Immortal Virus</strong>.
-    </p>
-  </section>
-
-  <section id="updates">
-    <h2>Recent Directives</h2>
-    <div id="directives-container">
-      <p>Loading classified directives...</p>
+    <div class="home-sections">
+      <a href="cia-lore.html" class="card">C.I.A Lore</a>
+      <a href="handbook.html" class="card">Field Handbook</a>
+      <a href="directives.html" class="card">Directives</a>
+      <a href="watchlogs.html" class="card">Watchlogs</a>
+      <a href="containment_logs.html" class="card">Containment Logs</a>
     </div>
-  </section>
-</main>
+  </main>
 
-<footer>
-  <p>© 2057 Cryptic Intelligence Agency | Clearance Level Required</p>
-</footer>
-  
-<script>
-  fetch("navbar.html")
-    .then(response => response.text())
-    .then(html => { document.getElementById("navbar").innerHTML = html; });
-</script>
-
+  <script>
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById("navbar").innerHTML = html;
+      });
+  </script>
 </body>
 </html>
-
