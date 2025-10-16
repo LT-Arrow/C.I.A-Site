@@ -5,19 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Submit Anomaly Report | C.I.A</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Optional: add styling specific to this page */
+    .submit-container {
+      text-align: center;
+      padding: 60px 20px;
+      color: #e6e6e6;
+      background: #0c0c0c;
+      min-height: 80vh;
+    }
+
+    .submit-container h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      color: #ffffff;
+      letter-spacing: 2px;
+    }
+
+    .submit-container p {
+      font-size: 1.1em;
+      color: #bbb;
+      max-width: 700px;
+      margin: 0 auto 40px auto;
+    }
+
+    .btn-report {
+      display: inline-block;
+      background: #222;
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      letter-spacing: 1px;
+      border: 2px solid #444;
+      transition: all 0.3s ease;
+    }
+
+    .btn-report:hover {
+      background: #444;
+      border-color: #666;
+      color: #00e1ff;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #666;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      background: #111;
+      margin: 0;
+      padding: 10px;
+    }
+
+    nav ul li {
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background: #333;
+      color: #00e1ff;
+    }
+
+  </style>
 </head>
 <body>
 
 <header>
-  <h1>Submit Anomaly Report</h1>
-  <p><i>“If you’ve witnessed or recorded unusual activity, submit your findings here.”</i></p>
+  <h1>C.I.A – Cryptic Intelligence Agency</h1>
+  <p><i>“Every anomaly reported brings us closer to understanding the unknown.”</i></p>
 </header>
 
 <nav>
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="submit.html">Submit</a></li>
-    <li><a href="handbook.html">New Recruit / Handbook</a></li>
+    <li><a href="handbook.html">Recruit Handbook</a></li>
     <li><a href="lore.html">CIA Lore</a></li>
     <li><a href="directives.html">Directives</a></li>
     <li><a href="watchlogs.html">Watchlogs</a></li>
@@ -26,35 +106,30 @@
 </nav>
 
 <main>
-  <section>
-    <h2>Report Form</h2>
-    <form id="anomaly-form">
-      <label for="reporter">Operative Name or ID:</label>
-      <input type="text" id="reporter" name="reporter" required>
+  <section class="submit-container">
+    <h1>Submit a Report</h1>
+    <p>
+      Welcome, Field Agent.  
+      If you’ve witnessed, documented, or encountered an unexplained cryptic, alien, or supernatural event, 
+      you are required to report it to headquarters for classification and containment review.  
+      Click the button below to access the secure submission form.
+    </p>
 
-      <label for="location">Location of Event:</label>
-      <input type="text" id="location" name="location" required>
-
-      <label for="description">Description:</label>
-      <textarea id="description" name="description" rows="6" required></textarea>
-
-      <label for="classification">Suggested Classification:</label>
-      <select id="classification" name="classification">
-        <option value="anomaly">Anomaly</option>
-        <option value="cryptid">Cryptid</option>
-        <option value="alien">Alien</option>
-        <option value="supernatural">Supernatural</option>
-        <option value="viral">Viral Mutation</option>
-      </select>
-
-      <button type="submit">Submit Report</button>
-    </form>
+    <a href="https://docs.google.com/forms/d/1F6sMcrsRqYR6aDHxDW09IBN9e8AHwq3rXR-GWREi_fY/viewform"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="btn-report">
+       OPEN SECURE SUBMISSION FORM
+    </a>
   </section>
 </main>
 
 <footer>
   <p>© 2057 Cryptic Intelligence Agency | Clearance Level Required</p>
 </footer>
+
+</body>
+</html>
 
 </body>
 </html>
