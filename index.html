@@ -8,6 +8,8 @@
   <script src="js/main.js" defer></script>
 </head>
 <body>
+  
+<div id="navbar"></div>
 
 <header>
   <h1>C.I.A Headquarters</h1>
@@ -47,6 +49,12 @@
 <footer>
   <p>© 2057 Cryptic Intelligence Agency | Clearance Level Required</p>
 </footer>
+  
+<script>
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(html => { document.getElementById("navbar").innerHTML = html; });
+</script>
 
 </body>
 </html>
