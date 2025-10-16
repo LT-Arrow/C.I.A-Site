@@ -6,6 +6,9 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+  <div id="navbar"></div>
+
   <header>
     <h1>The Cryptic Intelligence Agency Archives</h1>
     <p>Established 2020 — Concealing the truths humanity isn't ready for.</p>
@@ -37,5 +40,12 @@
   <footer>
     <p>© 2057 Cryptic Intelligence Agency | Classified Level 3+</p>
   </footer>
+ 
+  <script>
+  fetch("navbar.html")
+    .then(response => response.text())
+    .then(html => { document.getElementById("navbar").innerHTML = html; });
+</script>
+
 </body>
 </html>
