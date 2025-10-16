@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CIA Lore</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIA Lore | Central Intelligence Archives</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="navbar"></div>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="lore.html">C.I.A Lore</a>
+    <a href="handbook.html">Field Handbook</a>
+    <a href="directives.html">Directives</a>
+    <a href="watchlogs.html">Watchlogs</a>
+    <a href="logs.html">Containment Logs</a>
+  </div>
 
-  <main>
-    <h1>The Lore of the C.I.A</h1>
-    <p>The Central Intelligence Archives (C.I.A) was founded after the First Reality Breach. Tasked with maintaining order, containment, and study of anomalous entities, the organization operates across all sectors of known existence.</p>
-    <h2>Core Divisions</h2>
-    <ul>
-      <li><b>Containment Division:</b> Responsible for capturing and securing entities.</li>
-      <li><b>Research Division:</b> Studies anomalies for strategic and technological gain.</li>
-      <li><b>Field Operations:</b> Executes on-site containment and cleanup missions.</li>
-    </ul>
-  </main>
+  <div class="container">
+    <h1>C.I.A Lore Overview</h1>
+    <p>
+      The Central Intelligence Archives were established after the first recorded multiversal breach, when entities began crossing between realities. The organization was founded to document, study, and contain these phenomena.
+    </p>
+    <p>
+      Over time, agents discovered that each universe holds unique laws of physics and magic. The Archives operate across these dimensions to protect humanity and preserve balance.
+    </p>
+    <p>
+      Divisions within the CIA include:
+      <ul>
+        <li><b>Containment Division:</b> Responsible for neutralizing threats and maintaining secrecy.</li>
+        <li><b>Research Division:</b> Studies interdimensional phenomena and anomalies.</li>
+        <li><b>Field Agents:</b> Handle direct investigations and first contact situations.</li>
+      </ul>
+    </p>
+    <p>
+      Each case logged within the Archives represents a significant threat or unexplained occurrence, often beyond human understanding.
+    </p>
+  </div>
 
-  <script>
-    fetch("navbar.html").then(r => r.text()).then(h => { document.getElementById("navbar").innerHTML = h });
-  </script>
-</body>
-</html>
-
+  <footer>
+    © 2025 Central Intelligence Archives | Lore Section
+  </footer>
 </body>
 </html>
