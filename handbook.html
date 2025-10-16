@@ -1,54 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recruit Handbook | C.I.A</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Field Handbook</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="navbar"></div>
 
-<header>
-  <h1>Recruit Handbook</h1>
-  <p><i>“Orientation and operational conduct for all new agents.”</i></p>
-</header>
-
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="submit.html">Submit</a></li>
-    <li><a href="handbook.html">New Recruit / Handbook</a></li>
-    <li><a href="lore.html">CIA Lore</a></li>
-    <li><a href="directives.html">Directives</a></li>
-    <li><a href="watchlogs.html">Watchlogs</a></li>
-    <li><a href="containment_logs.html">Containment Logs</a></li>
-  </ul>
-</nav>
-
-<main>
-  <section>
-    <h2>Welcome to the Cryptic Intelligence Agency</h2>
-    <p>
-      Congratulations, recruit. You have been officially inducted into one of the most secretive branches
-      of global defense. Your mission is to observe, investigate, and contain phenomena that defy logic or science.
-    </p>
-
-    <h3>Rules of Engagement</h3>
+  <main>
+    <h1>Field Handbook</h1>
+    <p>This handbook outlines protocols, ranking systems, and emergency measures for field agents.</p>
+    <h2>Agent Classification</h2>
     <ul>
-      <li>Maintain discretion. The public must not be aware of cryptic activity.</li>
-      <li>Never engage an entity without clearance from Command.</li>
-      <li>All field data must be submitted via the <a href="submit.html">Anomaly Report Form</a>.</li>
-      <li>In the event of contamination or exposure, await extraction and follow decontamination protocol 47-B.</li>
+      <li><b>Level 1:</b> Basic Clearance — civilian support and field observation.</li>
+      <li><b>Level 2:</b> Tactical Clearance — operational support and minor containment.</li>
+      <li><b>Level 3:</b> High Clearance — direct containment and research roles.</li>
     </ul>
+    <h2>Containment Protocols</h2>
+    <p>When encountering unidentified anomalies, agents are to secure the area, mark all exits, and await confirmation from HQ before engagement.</p>
+  </main>
 
-    <h3>Security Clearances</h3>
-    <p>Access levels are granted based on operational record and psychological stability. Unauthorized access to classified files will result in termination of clearance and immediate detainment.</p>
-  </section>
-</main>
-
-<footer>
-  <p>© 2057 Cryptic Intelligence Agency | Clearance Level Required</p>
-</footer>
-
+  <script>
+    fetch("navbar.html").then(r => r.text()).then(h => { document.getElementById("navbar").innerHTML = h });
+  </script>
 </body>
 </html>
