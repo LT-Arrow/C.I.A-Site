@@ -1,43 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Containment Logs | C.I.A</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Containment Logs</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="navbar"></div>
 
-<header>
-  <h1>Containment Logs</h1>
-  <p><i>“Records of secured anomalies and entities.”</i></p>
-</header>
-
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="submit.html">Submit</a></li>
-    <li><a href="handbook.html">New Recruit / Handbook</a></li>
-    <li><a href="lore.html">CIA Lore</a></li>
-    <li><a href="directives.html">Directives</a></li>
-    <li><a href="watchlogs.html">Watchlogs</a></li>
-    <li><a href="containment_logs.html">Containment Logs</a></li>
-  </ul>
-</nav>
-
-<main>
-  <section>
-    <h2>Secured Containment Units</h2>
-    <p>All anomalies currently contained within CIA facilities are logged here for internal documentation.</p>
-    <div id="containment-entries">
-      <p>No containment data uploaded.</p>
+  <main>
+    <h1>Containment Logs</h1>
+    <p>Containment Logs store all approved field reports of captured or neutralized anomalies.</p>
+    <div class="log-entry">
+      <h3>Case File #A-092</h3>
+      <p><b>Status:</b> Secured</p>
+      <p><b>Description:</b> Unknown humanoid entity exhibiting spatial distortion capabilities. Contained in Site-3.</p>
     </div>
-  </section>
-</main>
+  </main>
 
-<footer>
-  <p>© 2057 Cryptic Intelligence Agency | Clearance Level Required</p>
-</footer>
-
+  <script>
+    fetch("navbar.html").then(r => r.text()).then(h => { document.getElementById("navbar").innerHTML = h });
+  </script>
 </body>
 </html>
