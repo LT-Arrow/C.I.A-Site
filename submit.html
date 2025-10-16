@@ -3,24 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Submit an Anomaly | Cryptic Intelligence Agency</title>
- <link rel="stylesheet" href="css/style.css">
+  <title>Submit Anomaly Report | C.I.A</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1>Submit an Anomaly</h1>
-    <p class="subtext">Report any new entities, cryptics, or unexplained phenomena.</p>
-  </header>
 
-  <section class="form-section">
-    <p>Please complete the official submission form below. Ensure all data is verified and redact sensitive civilian information.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfuVDZPiJZdA-JCWgCHyipzaw5H_SpGxdrKtzvVmksFj6656g/viewform?usp=header" target="_blank" class="submit-button">
-      Open Submission Form
-    </a>
+<header>
+  <h1>Submit Anomaly Report</h1>
+  <p><i>“If you’ve witnessed or recorded unusual activity, submit your findings here.”</i></p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="submit.html">Submit</a></li>
+    <li><a href="handbook.html">New Recruit / Handbook</a></li>
+    <li><a href="lore.html">CIA Lore</a></li>
+    <li><a href="directives.html">Directives</a></li>
+    <li><a href="watchlogs.html">Watchlogs</a></li>
+    <li><a href="containment_logs.html">Containment Logs</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section>
+    <h2>Report Form</h2>
+    <form id="anomaly-form">
+      <label for="reporter">Operative Name or ID:</label>
+      <input type="text" id="reporter" name="reporter" required>
+
+      <label for="location">Location of Event:</label>
+      <input type="text" id="location" name="location" required>
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" rows="6" required></textarea>
+
+      <label for="classification">Suggested Classification:</label>
+      <select id="classification" name="classification">
+        <option value="anomaly">Anomaly</option>
+        <option value="cryptid">Cryptid</option>
+        <option value="alien">Alien</option>
+        <option value="supernatural">Supernatural</option>
+        <option value="viral">Viral Mutation</option>
+      </select>
+
+      <button type="submit">Submit Report</button>
+    </form>
   </section>
+</main>
 
-  <footer>
-    <p>© 2057 Cryptic Intelligence Agency | Confidential</p>
-  </footer>
+<footer>
+  <p>© 2057 Cryptic Intelligence Agency | Clearance Level Required</p>
+</footer>
+
 </body>
 </html>
