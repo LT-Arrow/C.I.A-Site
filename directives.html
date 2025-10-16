@@ -1,43 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Directives | C.I.A</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Directives</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="navbar"></div>
 
-<header>
-  <h1>C.I.A Directives</h1>
-  <p><i>“Operational orders and field assignments.”</i></p>
-</header>
+  <main>
+    <h1>Operational Directives</h1>
+    <p>These directives define mission-level authority, threat response standards, and approval processes for classified operations.</p>
+    <ol>
+      <li>Maintain secrecy of all ongoing operations.</li>
+      <li>Field agents must report findings daily through the secure submission form.</li>
+      <li>Unauthorized data transfer or disclosure will result in immediate clearance suspension.</li>
+    </ol>
+  </main>
 
-<nav>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="submit.html">Submit</a></li>
-    <li><a href="handbook.html">New Recruit / Handbook</a></li>
-    <li><a href="lore.html">CIA Lore</a></li>
-    <li><a href="directives.html">Directives</a></li>
-    <li><a href="watchlogs.html">Watchlogs</a></li>
-    <li><a href="containment_logs.html">Containment Logs</a></li>
-  </ul>
-</nav>
-
-<main>
-  <section>
-    <h2>Active Directives</h2>
-    <p>Below is a list of ongoing missions and investigative objectives currently assigned to field operatives.</p>
-    <div id="directives-list">
-      <p>No active directives found. Awaiting Command upload...</p>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <p>© 2057 Cryptic Intelligence Agency | Clearance Level Required</p>
-</footer>
-
+  <script>
+    fetch("navbar.html").then(r => r.text()).then(h => { document.getElementById("navbar").innerHTML = h });
+  </script>
 </body>
 </html>
+
