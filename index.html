@@ -10,7 +10,32 @@
     font-family: 'Courier New', monospace;
     background-color: #0a0a0a;
     color: #00ff99;
-    overflow-x: hidden;
+  }
+
+  /* NAVIGATION BAR */
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #001a12;
+    border-bottom: 2px solid #00ff99;
+    box-shadow: 0 0 10px #00ff99;
+  }
+
+  nav a {
+    color: #00ff99;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+  }
+
+  nav a:hover {
+    background-color: #00ff99;
+    color: #000;
+    box-shadow: 0 0 10px #00ff99;
   }
 
   header {
@@ -105,12 +130,25 @@
 </head>
 <body>
 
+<!-- NAVIGATION BAR -->
+<nav>
+  <a href="#">Home</a>
+  <a href="containment.html">Containment Logs</a>
+  <a href="missions.html">Mission Logs</a>
+  <a href="directives.html">Directives</a>
+  <a href="handbook.html">Handbook</a>
+  <a href="watchlogs.html">Watchlogs</a>
+  <a href="lore.html">Lore</a>
+</nav>
+
+<!-- HEADER -->
 <header>
   <h1>2057 Cryptic Intelligence Agency</h1>
   <p>“Monitoring anomalies, securing intelligence, protecting humanity.”</p>
   <div class="access-granted">ACCESS GRANTED</div>
 </header>
 
+<!-- ABOUT -->
 <section id="about">
   <h2>About the Agency</h2>
   <p>
@@ -121,6 +159,7 @@
   </p>
 </section>
 
+<!-- UPDATES -->
 <section id="updates">
   <h2>Latest Updates</h2>
   <p>
@@ -131,6 +170,7 @@
   </p>
 </section>
 
+<!-- JOIN -->
 <section id="join">
   <h2>Join the Investigation</h2>
   <p>
@@ -140,13 +180,18 @@
   </p>
   <div class="button-container">
     <a href="https://discord.gg/dGgbqh9eQu" target="_blank" class="button">Join the Discord</a>
-    <a href="www.youtube.com/@C.I.ACryptic" target="_blank" class="button">Visit YouTube</a>
+    <a href="https://www.youtube.com/channel/UCkjtrncd6Cu9gC4IxWhlg9Q" target="_blank" class="button">Visit YouTube</a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   © 2057 Cryptic Intelligence Agency | Confidential Clearance Required
 </footer>
+
+</body>
+</html>
+
 
 </body>
 </html>
