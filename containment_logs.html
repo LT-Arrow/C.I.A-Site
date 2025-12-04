@@ -1,49 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Containment Logs | Cryptic Intellengence Agency</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Containment Logs | 2057 C.I.A.</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    background-color: #0a0a0a;
+    color: #00ff99;
+  }
+
+  /* NAV BAR */
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #001a12;
+    border-bottom: 2px solid #00ff99;
+    box-shadow: 0 0 10px #00ff99;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  nav a {
+    color: #00ff99;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+  }
+
+  nav a:hover {
+    background-color: #00ff99;
+    color: #000;
+    box-shadow: 0 0 10px #00ff99;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 60px 20px 30px;
+    background: radial-gradient(circle, #001a12 0%, #000000 90%);
+    border-bottom: 2px solid #00ff99;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  /* SEARCH BAR */
+  .search-container {
+    text-align: center;
+    margin: 30px 0;
+  }
+
+  .search-input {
+    width: 50%;
+    padding: 12px;
+    background-color: #001a12;
+    border: 2px solid #00ff99;
+    color: #00ff99;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 0 10px #00ff99;
+  }
+
+  .search-input::placeholder {
+    color: #66ffcc;
+  }
+
+  /* LOG ENTRY WRAPPER */
+  .log-entry {
+    background-color: #001a12;
+    border: 1px solid #00ff99;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px #00ff99;
+  }
+
+  .log-header {
+    cursor: pointer;
+  }
+
+  .log-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  .log-details {
+    display: none;
+    margin-top: 15px;
+    color: #b3ffcc;
+    line-height: 1.6;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #001a12;
+    color: #00ff99;
+    border-top: 2px solid #00ff99;
+    margin-top: 40px;
+  }
+</style>
+
+<script>
+  function toggleDetails(id) {
+    const section = document.getElementById(id);
+    section.style.display = (section.style.display === "block") ? "none" : "block";
+  }
+
+  function searchLogs() {
+    let input = document.getElementById("searchBar").value.toLowerCase();
+    let logs = document.getElementsByClassName("log-entry");
+
+    for (let i = 0; i < logs.length; i++) {
+      let header = logs[i].querySelector(".log-header").innerText.toLowerCase();
+      logs[i].style.display = header.includes(input) ? "" : "none";
+    }
+  }
+</script>
+
 </head>
 <body>
-  <div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="lore.html">Lore</a>
-    <a href="handbook.html">Recruit Handbook</a>
-    <a href="directives.html">Directives</a>
-    <a href="watchlogs.html">Watchlogs</a>
-    <a href="containment_logs.html" class="active">Containment Logs</a>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="containment.html">Containment Logs</a>
+  <a href="missions.html">Mission Logs</a>
+  <a href="directives.html">Directives</a>
+  <a href="handbook.html">Handbook</a>
+  <a href="watchlogs.html">Watchlogs</a>
+  <a href="lore.html">Lore</a>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <h1>Containment Logs</h1>
+  <p>Secure • Monitor • Neutralize</p>
+</header>
+
+<!-- SEARCH BAR -->
+<div class="search-container">
+  <input id="searchBar" type="text" class="search-input" onkeyup="searchLogs()" placeholder="Search containment files...">
+</div>
+
+<!-- SAMPLE LOG ENTRY 1 -->
+<div class="log-entry">
+  <div class="log-header" onclick="toggleDetails('log1')">
+    <h2>C-001 — The Watcheye</h2>
   </div>
-
-  <div class="container">
-    <h1>Containment Records</h1>
-    <p>
-      The following are confirmed containment records of classified anomalies.  
-      Each entry includes status, containment level, and assigned division.
-    </p>
-
-    <div class="containment">
-      <h2>Log C-021: “Black Veil Incident”</h2>
-      <p>Status: <b>Contained</b><br>
-      Description: Unknown mist spreading across dimension 47-K. Contained using dimensional anchors.</p>
-    </div>
-
-    <div class="containment">
-      <h2>Log C-047: “Chrono Rift”</h2>
-      <p>Status: <b>Active Containment</b><br>
-      Description: Temporal distortion loop in Sector 9. Continuous monitoring by Research Division.</p>
-    </div>
-
-    <div class="containment">
-      <h2>Log C-089: “Hollow Signal”</h2>
-      <p>Status: <b>Neutralized</b><br>
-      Description: Energy-based entity neutralized after cross-dimensional interference detected.</p>
-    </div>
+  <div class="log-details" id="log1">
+    <p><strong>Classification:</strong> Uncontained / Visual-Only Entity</p>
+    <p><strong>Description:</strong> Entity only visible on CCTV, drones, or digital surveillance feeds. Cannot be directly perceived by the human eye.</p>
+    <p><strong>Containment Protocol:</strong> All security cameras must record continuously. Any recorded appearance triggers auto-lockdown and an investigation team.</p>
   </div>
+</div>
 
-  <footer>
-    © 2057 Cryptic Intellengence Agency | Containment Division
-  </footer>
+<!-- SAMPLE LOG ENTRY 2 -->
+<div class="log-entry">
+  <div class="log-header" onclick="toggleDetails('log2')">
+    <h2>C-017 — "Hollow Mothman"</h2>
+  </div>
+  <div class="log-details" id="log2">
+    <p><strong>Classification:</strong> Threat-Level Amber</p>
+    <p><strong>Description:</strong> Winged humanoid. Emits a frequency causing hallucinations. Appears during electrical disturbances.</p>
+    <p><strong>Containment Protocol:</strong> Contained in a Faraday-isolated chamber. Any power fluctuation requires emergency stabilization.</p>
+  </div>
+</div>
+
+<footer>
+  © 2057 Cryptic Intelligence Agency | Containment Division
+</footer>
+
 </body>
 </html>
