@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Database</title>
+
+    <!-- Embedded CSS -->
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #050505;
+            padding: 20px;
+            border-right: 2px solid #0f0;
+        }
+
+        .sidebar h2 {
+            color: #0f0;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #0f0;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .sidebar ul li a.active {
+            font-weight: bold;
+            text-shadow: 0 0 10px #0f0;
+        }
+
+        .main {
+            flex: 1;
+            padding: 30px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .subtitle {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        /* DATABASE */
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 12px;
+            background: #0a0a0a;
+            border: 1px solid #0f0;
+            color: #0f0;
+            font-size: 16px;
+        }
+
+        .database-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .db-card {
+            border: 1px solid #0f0;
+            padding: 15px;
+            background-color: rgba(0, 20, 0, 0.5);
+            transition: 0.2s;
+        }
+
+        .db-card:hover {
+            background-color: rgba(0, 60, 0, 0.6);
+            transform: scale(1.03);
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>C.I.A Dashboard</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="missions.html">Missions</a></li>
+            <li><a href="directives.html">Directives</a></li>
+            <li><a href="handbook.html">Handbook</a></li>
+            <li><a href="watchlogs.html">Watch Logs</a></li>
+            <li><a href="lore.html">Lore</a></li>
+            <li><a class="active" href="database.html">Database</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <h1>Agent & Entity Database</h1>
+        <p class="subtitle">Search and review all registered OC files</p>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by codename, name, rank, or classification…">
+        </div>
+
+        <div id="databaseList" class="database-grid">
+
+            <!-- SAMPLE CARDS – duplicate and edit these if needed -->
+
+            <div class="db-card" data-tags="codename raven shadow rank 3 containment specialist">
+                <h3>Codename: Raven Shadow</h3>
+                <p><strong>Name:</strong> Elira Voss</p>
+                <p><strong>Rank:</strong> Clearance 3</p>
+                <p><strong>Division:</strong> Containment</p>
+            </div>
+
+            <div class="db-card" data-tags="codename echo frost analyst level 2 field ops">
+                <h3>Codename: Echo Frost</h3>
+                <p><strong>Name:</strong> Kaden Hale</p>
+                <p><strong>Rank:</strong> Clearance 2</p>
+                <p><strong>Division:</strong> Field Ops</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById("searchInput");
+        const cards = document.querySelectorAll(".db-card");
+
+        searchInput.addEventListener("input", () => {
+            const query = searchInput.value.toLowerCase();
+
+            cards.forEach(card => {
+                const tags = card.getAttribute("data-tags").toLowerCase();
+                card.style.display = tags.includes(query) ? "block" : "none";
+            });
+        });
+    </script>
+
+</body>
+</html>
