@@ -7,94 +7,112 @@
 
     <!-- Embedded CSS -->
     <style>
-        body {
-            background-color: #000;
-            color: #0f0;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
+       body {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background-color: #0a0a0a;
+  color: #00ff99;
+}
 
-        .sidebar {
-            width: 250px;
-            background-color: #050505;
-            padding: 20px;
-            border-right: 2px solid #0f0;
-        }
+/* NAV BAR */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #001a12;
+  border-bottom: 2px solid #00ff99;
+  box-shadow: 0 0 10px #00ff99;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-        .sidebar h2 {
-            color: #0f0;
-            margin-bottom: 20px;
-        }
+nav a {
+  color: #00ff99;
+  text-decoration: none;
+  padding: 15px 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
 
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
+nav a:hover {
+  background-color: #00ff99;
+  color: #000;
+  box-shadow: 0 0 10px #00ff99;
+}
 
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
+/* HEADER */
+header {
+  text-align: center;
+  padding: 60px 20px 30px;
+  background: radial-gradient(circle, #001a12 0%, #000000 90%);
+  border-bottom: 2px solid #00ff99;
+}
 
-        .sidebar ul li a {
-            color: #0f0;
-            text-decoration: none;
-            font-size: 16px;
-        }
+header h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 
-        .sidebar ul li a.active {
-            font-weight: bold;
-            text-shadow: 0 0 10px #0f0;
-        }
+/* CONTAINER */
+.container {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+}
 
-        .main {
-            flex: 1;
-            padding: 30px;
-        }
+/* ENTRY BLOCKS */
+.entry {
+  background-color: #001a12;
+  border: 1px solid #00ff99;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 8px #00ff99;
+}
 
-        h1 {
-            margin-top: 0;
-        }
+.entry h2 {
+  margin-top: 0;
+  text-transform: uppercase;
+}
 
-        .subtitle {
-            opacity: 0.8;
-            margin-bottom: 20px;
-        }
+/* SEARCH + DATABASE (OLD THEME VERSION) */
+.search-container {
+  margin-bottom: 20px;
+}
 
-        /* DATABASE */
+#searchInput {
+  width: 100%;
+  padding: 12px;
+  background: #000;
+  border: 1px solid #00ff99;
+  color: #00ff99;
+  font-size: 16px;
+}
 
-        .search-container {
-            margin-bottom: 20px;
-        }
+.database-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
 
-        #searchInput {
-            width: 100%;
-            padding: 12px;
-            background: #0a0a0a;
-            border: 1px solid #0f0;
-            color: #0f0;
-            font-size: 16px;
-        }
+.db-card {
+  border: 1px solid #00ff99;
+  padding: 15px;
+  background-color: #001a12;
+  box-shadow: 0 0 8px #00ff99;
+  transition: 0.2s;
+}
 
-        .database-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .db-card {
-            border: 1px solid #0f0;
-            padding: 15px;
-            background-color: rgba(0, 20, 0, 0.5);
-            transition: 0.2s;
-        }
-
-        .db-card:hover {
-            background-color: rgba(0, 60, 0, 0.6);
-            transform: scale(1.03);
-            cursor: pointer;
-        }
+.db-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px #00ff99;
+  background-color: #003322;
+  cursor: pointer;
+}
 
     </style>
 </head>
