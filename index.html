@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2057 Cryptic Intelligence Agency</title>
+
 <style>
   body {
     margin: 0;
@@ -126,12 +127,88 @@
     h1 { font-size: 2rem; }
     section { padding: 40px 5%; }
   }
+
+  /* ===============================
+     CIA TERMINAL POPUP (ADDED)
+     =============================== */
+
+  .terminal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .terminal-window {
+    border: 2px solid #00ff99;
+    box-shadow: 0 0 20px #00ff99;
+    background-color: #001a12;
+    padding: 30px;
+    max-width: 500px;
+    text-align: center;
+    animation: flicker 1.5s infinite;
+  }
+
+  @keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.95; }
+    100% { opacity: 1; }
+  }
+
+  .terminal-window h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .terminal-window p {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .terminal-buttons button {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    margin: 10px;
+    padding: 10px 25px;
+    background-color: #00ff99;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ff99;
+  }
+
+  .terminal-buttons button:hover {
+    background-color: #00cc7a;
+  }
 </style>
 </head>
+
 <body>
 
+<!-- ===============================
+     CIA TERMINAL POPUP (ADDED)
+     =============================== -->
+<div id="terminalPopup" class="terminal-overlay" style="display:none;">
+  <div class="terminal-window">
+    <h2>SECURE CIA TERMINAL</h2>
+    <p>
+      You have accessed a classified CIA terminal.<br><br>
+      Is this your first time?
+    </p>
+    <div class="terminal-buttons">
+      <button onclick="firstTimeYes()">YES</button>
+      <button onclick="firstTimeNo()">NO</button>
+    </div>
+  </div>
+</div>
+
 <!-- NAVIGATION BAR -->
-  <nav>
+<nav>
   <a href="index.html">Home</a>
   <a href="containment_logs.html">Containment Logs</a>
   <a href="missions.html">Mission Logs</a>
@@ -141,7 +218,6 @@
   <a href="lore.html">Lore</a>
   <a href="database.html">Database</a>
 </nav>
-
 
 <!-- HEADER -->
 <header>
@@ -194,9 +270,26 @@
   © 2057 Cryptic Intelligence Agency | Confidential Clearance Required
 </footer>
 
-</body>
-</html>
+<!-- ===============================
+     POPUP SCRIPT (ADDED)
+     =============================== -->
+<script>
+  window.onload = function () {
+    if (!localStorage.getItem("cia_first_time")) {
+      document.getElementById("terminalPopup").style.display = "flex";
+    }
+  };
 
+  function firstTimeYes() {
+    localStorage.setItem("cia_first_time", "acknowledged");
+    window.location.href = "foundational_secrets.html";
+  }
+
+  function firstTimeNo() {
+    localStorage.setItem("cia_first_time", "acknowledged");
+    document.getElementById("terminalPopup").style.display = "none";
+  }
+</script>
 
 </body>
 </html>
