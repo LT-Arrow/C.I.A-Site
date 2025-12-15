@@ -6,7 +6,7 @@
 <title>2057 Cryptic Intelligence Agency</title>
 
 <style>
-/* ===== BASE SITE STYLES (UNCHANGED) ===== */
+/* ===== BASE SITE STYLES ===== */
 body {
   margin: 0;
   font-family: 'Courier New', monospace;
@@ -49,21 +49,15 @@ header {
 
 header h1 {
   font-size: 2.5rem;
-  text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 10px;
 }
 
 header p {
-  font-size: 1.1rem;
-  color: #00ff99;
   opacity: 0.8;
 }
 
 .access-granted {
-  text-align: center;
   font-size: 1.5rem;
-  color: #00ff99;
   border: 2px solid #00ff99;
   display: inline-block;
   padding: 10px 20px;
@@ -80,80 +74,42 @@ section {
   border-bottom: 1px solid #003322;
 }
 
-h2 {
-  text-transform: uppercase;
-  color: #00ff99;
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-p {
-  color: #b3ffcc;
-  line-height: 1.6;
-}
-
 .button-container {
   text-align: center;
-  margin-top: 30px;
 }
 
 .button {
-  display: inline-block;
   margin: 15px;
   padding: 12px 30px;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
+  background: #00ff99;
   color: #000;
-  background-color: #00ff99;
+  font-weight: bold;
+  text-decoration: none;
   border-radius: 6px;
-  transition: 0.3s;
-  box-shadow: 0 0 10px #00ff99;
 }
 
-.button:hover {
-  background-color: #00cc7a;
-  box-shadow: 0 0 20px #00ff99;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  background-color: #001a12;
-  color: #00ff99;
-  border-top: 2px solid #00ff99;
-}
-
-@media screen and (max-width: 768px) {
-  h1 { font-size: 2rem; }
-  section { padding: 40px 5%; }
-}
-
-/* ===== CIA TERMINAL POPUP STYLES ===== */
+/* ===== CIA TERMINAL POPUP ===== */
 .cia-gate {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.95);
   color: #00ff66;
-  font-family: monospace;
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 9999;
 }
 
+.cia-gate.active {
+  display: flex;
+}
+
 .cia-window {
   border: 2px solid #00ff66;
   padding: 30px;
-  width: 90%;
   max-width: 520px;
   text-align: center;
   box-shadow: 0 0 25px #00ff66;
-}
-
-.cia-window h1 {
-  margin-bottom: 20px;
-  font-size: 20px;
 }
 
 .cia-buttons {
@@ -167,7 +123,6 @@ footer {
   color: #00ff66;
   border: 1px solid #00ff66;
   padding: 10px 25px;
-  font-size: 16px;
   cursor: pointer;
 }
 
@@ -195,7 +150,6 @@ footer {
   </div>
 </div>
 
-<!-- NAVIGATION BAR -->
 <nav>
   <a href="index.html">Home</a>
   <a href="containment_logs.html">Containment Logs</a>
@@ -207,74 +161,39 @@ footer {
   <a href="database.html">Database</a>
 </nav>
 
-<!-- HEADER -->
 <header>
   <h1>2057 Cryptic Intelligence Agency</h1>
   <p>“Monitoring anomalies, securing intelligence, protecting humanity.”</p>
   <div class="access-granted">ACCESS GRANTED</div>
 </header>
 
-<!-- ABOUT -->
-<section id="about">
+<section>
   <h2>About the Agency</h2>
-  <p>
-    The Cryptic Intelligence Agency (C.I.A.) operates beyond conventional jurisdictions,
-    investigating unexplained phenomena, classified entities, and global anomalies.
-    Our agents work across physical and digital planes to maintain interdimensional stability
-    and prevent world-ending events.
-  </p>
+  <p>The Cryptic Intelligence Agency operates beyond conventional jurisdictions.</p>
 </section>
 
-<!-- UPDATES -->
-<section id="updates">
-  <h2>Latest Updates</h2>
-  <p>
-    — New dimensional breach signatures detected near Sector-9.<br>
-    — Two unidentified entities classified as C-248-B and C-311 added to the containment registry.<br>
-    — Operation Black Lattice approved for deployment after abnormal radio chatter detected in Midnight City.<br>
-    — Ongoing recruitment for field analysts and containment specialists.<br>
-    — Surveillance drones lost contact near the Fallen Kingdom Rift—investigation pending.<br>
-    — Director’s Office issued Directive-14 regarding cross-timeline incursions.<br>
-    — Recruitment wave opened for Temporal Analysis Division and Special Response Unit-Theta.
-  </p>
-</section>
-
-<!-- JOIN -->
-<section id="join">
-  <h2>Join the Investigation</h2>
-  <p>
-    Connect with the C.I.A. through our secure communication channels.
-    Whether you’re a researcher, roleplayer, or agent in training — your intelligence may
-    determine the survival of the human race.
-  </p>
-  <div class="button-container">
-    <a href="https://discord.gg/dGgbqh9eQu" target="_blank" class="button">Join the Discord</a>
-    <a href="https://www.youtube.com/channel/UCkjtrncd6Cu9gC4IxWhlg9Q" target="_blank" class="button">Visit YouTube</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
   © 2057 Cryptic Intelligence Agency | Confidential Clearance Required
 </footer>
 
 <script>
-  // Show gate on first visit
-  window.onload = function () {
-    if (!localStorage.getItem("ciaFirstVisit")) {
-      document.getElementById("ciaGate").style.display = "flex";
-    }
-  };
+document.addEventListener("DOMContentLoaded", () => {
+  const gate = document.getElementById("ciaGate");
 
-  function firstTimeYes() {
-    localStorage.setItem("ciaFirstVisit", "true");
-    window.location.href = "foundational_secrets.html"; // your terms page
+  if (!localStorage.getItem("ciaFirstVisit")) {
+    gate.classList.add("active");
   }
+});
 
-  function firstTimeNo() {
-    localStorage.setItem("ciaFirstVisit", "true");
-    document.getElementById("ciaGate").style.display = "none";
-  }
+function firstTimeYes() {
+  localStorage.setItem("ciaFirstVisit", "true");
+  window.location.href = "foundational-secrets-act.html";
+}
+
+function firstTimeNo() {
+  localStorage.setItem("ciaFirstVisit", "true");
+  document.getElementById("ciaGate").classList.remove("active");
+}
 </script>
 
 </body>
