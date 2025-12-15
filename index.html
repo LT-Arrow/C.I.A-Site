@@ -258,22 +258,22 @@ footer {
   © 2057 Cryptic Intelligence Agency | Confidential Clearance Required
 </footer>
 
-<!-- POPUP LOGIC -->
 <script>
-  const gate = document.getElementById("ciaGate");
-
-  if (!localStorage.getItem("ciaVisited")) {
-    gate.style.display = "flex";
-  }
+  // Show gate on first visit
+  window.onload = function () {
+    if (!localStorage.getItem("ciaFirstVisit")) {
+      document.getElementById("ciaGate").style.display = "flex";
+    }
+  };
 
   function firstTimeYes() {
-    localStorage.setItem("ciaVisited", "true");
-    window.location.href = "foundational_secrets.html"; // CHANGE IF NEEDED
+    localStorage.setItem("ciaFirstVisit", "true");
+    window.location.href = "foundational_secrets.html"; // your terms page
   }
 
   function firstTimeNo() {
-    localStorage.setItem("ciaVisited", "true");
-    gate.style.display = "none";
+    localStorage.setItem("ciaFirstVisit", "true");
+    document.getElementById("ciaGate").style.display = "none";
   }
 </script>
 
